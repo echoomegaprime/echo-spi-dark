@@ -1,0 +1,35 @@
+name = "echo-spi-dark"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "echo-spi-dark"
+database_id = "988ba2e2-9ce7-4628-80f5-32c9c2c00f8b"
+
+[[kv_namespaces]]
+binding = "CACHE"
+id = "9b1725baa7494c7a9e1a11b71fd7f252"
+
+# SPI Core brain
+[[services]]
+binding = "SPI_BRAIN"
+service = "echo-spi-sovereign"
+
+# Direct ECHO access for fast queries
+[[services]]
+binding = "ECHO_CHAT"
+service = "echo-chat"
+
+[[services]]
+binding = "ENGINE_RUNTIME"
+service = "echo-engine-runtime"
+
+[[services]]
+binding = "SHARED_BRAIN"
+service = "echo-shared-brain"
+
+# Cron: daily provocation, weekly challenge
+[triggers]
+crons = ["0 14 * * *", "0 16 * * SUN"]
