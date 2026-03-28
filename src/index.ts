@@ -1326,6 +1326,8 @@ export default {
 
       // Route requests
       switch (path) {
+        case "/":
+          return jsonResponse({ service: 'echo-spi-dark', status: 'operational' });
         case "/health":
           return handleHealth(env);
 
